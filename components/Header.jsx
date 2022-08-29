@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import BookmarkNI from "../assets/BookmarkNI";
-import HomeNI from "../assets/HomeNI";
-import MovieMain from "../assets/MovieMain";
-import MoviesNI from "../assets/MoviesNI";
-import TvNI from "../assets/TvNI";
+import BookmarkNI from "../public/assets/BookmarkNI";
+import HomeNI from "../public/assets/HomeNI";
+import MovieMain from "../public/assets/MovieMain";
+import MoviesNI from "../public/assets/MoviesNI";
+import TvNI from "../public/assets/TvNI";
 import StHeader from "../styles/stComponents/StHeader";
-import avatar from "../assets/image-avatar.png";
+import avatar from "../public/assets/image-avatar.png";
 
 const Header = () => {
   return (
