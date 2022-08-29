@@ -3,40 +3,48 @@ import styled from "styled-components";
 const StTrending = styled.div`
   margin-top: 2.4rem;
 
-  .img{
-   position:relative;
-  }
-
   h3 {
     font-size: 2rem;
     margin-bottom: 1.6rem;
   }
 
-  .info{
-    position:absolute;
-    bottom:1.6rem;
-    left:1.6rem1;
+  .cont {
+    display: flex;
+    overflow: scroll;
+    gap: 1.6rem;
   }
 
-  .stats{
-    display:flex;
-    align-items:center;
-    gap:8px;
+  .img {
+    position: relative;
+    height: 14rem;
+    width:24rem;
   }
 
-  .dot{
-    width:4px;
-    height:4px;
-    background:#FFF;
-    border-radius:50%;
+  .info {
+    position: absolute;
+    bottom: 1.6rem;
+    left: 1.6rem;
   }
 
-  .stat{
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .stat {
     font-size: 12px;
-    font-weight:300;
+    font-weight: 300;
   }
 
-  .title{
+  .title {
     font-size: 15px;
   }
 `;
