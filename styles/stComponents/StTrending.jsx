@@ -47,6 +47,16 @@ const StTrending = styled.div`
   .title {
     font-size: 15px;
   }
+
+  .img button{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    background:#10141e96;
+    border-radius: 50%;
+    width:3.2rem;
+    height:3.2rem;
+  }
 `;
 
 export default StTrending;
