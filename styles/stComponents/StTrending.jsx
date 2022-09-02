@@ -6,12 +6,14 @@ const StTrending = styled.div`
   h3 {
     font-size: 2rem;
     margin-bottom: 1.6rem;
+    padding:0 1.6rem;
   }
 
   .cont {
     display: flex;
     overflow: scroll;
     gap: 1.6rem;
+    padding-gleft:1.6rem;
   }
 
   .img {

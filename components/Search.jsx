@@ -7,6 +7,7 @@ const Search = () => {
     align-items: center;
     gap:1.6rem;
     margin-top:1.6rem;
+    padding:0 1.6rem;
 
     input {
       background: transparent;

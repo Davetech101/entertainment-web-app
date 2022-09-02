@@ -47,7 +47,7 @@ const Trending = () => {
                 <span className="title">{data.title}</span>
               </div>
             </div>
-          </div>
+          </div> 
         );
       })}
     </div>
