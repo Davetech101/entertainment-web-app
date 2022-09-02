@@ -1,64 +1,74 @@
-import { useState } from 'react';
-import StRecommended from '../styles/stComponents/StRecommended'
-import movies from "../data.json"
-import Image from 'next/image';
-import Bookmark from '../public/assets/Bookmark';
-import Bookmarked from '../public/assets/Bookmarked';
-import Movie from '../public/assets/Movie';
+import { useState } from "react";
+import StRecommended from "../styles/stComponents/StRecommended";
+import movies from "../data.json";
+import Image from "next/image";
+import Bookmark from "../public/assets/Bookmark";
+import Bookmarked from "../public/assets/Bookmarked";
+import Movie from "../public/assets/Movie";
 
-
-const Recommended = () => {
+const Recommended = ({ search }) => {
   const [data, setData] = useState(movies);
 
-    const recommended = (
-        <div className="cont">
-          {data.map((data, idx) => {
-            const img = data.thumbnail.regular.small;
-            return (
-              <div key={data.title} className="subCont">
-                <div className="img">
-                  <Image
-                    style={{
-                      borderRadius: "10px",
-                    }}
-                    src={img}
-                    layout="fill"
-                    alt="Avatar"
-                  />
-                  <button
-                    onClick={() => setData((prev) => (
-                      prev.map((el, id) => (
-                        id === idx ? {...el, isBookmarked: !el.isBookmarked} : el
-                      ))
-                    ))}
-                  >
-                    {data.isBookmarked ? <Bookmarked /> : <Bookmark />}
-                  </button>
-    
-                  <div className="info">
-                    <div className="stats">
-                      <span className="stat">{data.year}</span>
-                      <span className="dot"></span>
-                      <Movie />
-                      <span className="stat">{data.category}</span>
-                      <span className="dot"></span>
-                      <span className="stat">{data.rating}</span>
-                    </div>
-                    <span className="title">{data.title}</span>
-                  </div>
+  const searched = data.filter((data) => {
+    const title = data.title.toLocaleLowerCase();
+    const searched = search.toLocaleLowerCase();
+
+    return title.includes(searched);
+  });
+
+  const recommended = (
+    <div className="cont">
+      {searched.map((data, idx) => {
+        const img = data.thumbnail.regular.small;
+        return (
+          <div key={data.title} className="subCont">
+            <div className="img">
+              <Image
+                style={{
+                  borderRadius: "10px",
+                }}
+                src={img}
+                layout="fill"
+                alt="Avatar"
+              />
+              <button
+                onClick={() =>
+                  setData((prev) =>
+                    prev.map((el, id) =>
+                      id === idx
+                        ? { ...el, isBookmarked: !el.isBookmarked }
+                        : el
+                    )
+                  )
+                }
+              >
+                {data.isBookmarked ? <Bookmarked /> : <Bookmark />}
+              </button>
+
+              <div className="info">
+                <div className="stats">
+                  <span className="stat">{data.year}</span>
+                  <span className="dot"></span>
+                  <Movie />
+                  <span className="stat">{data.category}</span>
+                  <span className="dot"></span>
+                  <span className="stat">{data.rating}</span>
                 </div>
+                <span className="title">{data.title}</span>
               </div>
-            );
-          })}
-        </div>
-      );
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
   return (
     <StRecommended>
-        <h2>Recommended for you</h2>
+      <h2>Recommended for you</h2>
 
-        {recommended}
+      {recommended}
     </StRecommended>
-  )
-}
+  );
+};
 
-export default Recommended
+export default Recommended;
