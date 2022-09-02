@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import StRecommended from '../styles/stComponents/StRecommended'
 import movies from "../data.json"
 import Image from 'next/image';
@@ -7,9 +8,11 @@ import Movie from '../public/assets/Movie';
 
 
 const Recommended = () => {
+  const [data, setData] = useState(movies);
+
     const recommended = (
         <div className="cont">
-          {movies?.map((data, idx) => {
+          {data.map((data, idx) => {
             const img = data.thumbnail.regular.small;
             return (
               <div key={data.title} className="subCont">

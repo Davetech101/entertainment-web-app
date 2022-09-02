@@ -13,7 +13,7 @@ const StTrending = styled.div`
     display: flex;
     overflow: scroll;
     gap: 1.6rem;
-    padding-gleft:1.6rem;
+    padding-left:1.6rem;
   }
 
   .img {
