@@ -3,6 +3,12 @@ import styled from 'styled-components'
 const StRecommended = styled.section`
 margin-top: 2.4rem;
 
+p{
+  font-size: 2rem;
+  margin:2.4rem 0;
+  padding:0 1.6rem;
+}
+
 h2 {
   font-size: 2rem;
   margin:2.4rem 0;

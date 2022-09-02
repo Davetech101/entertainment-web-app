@@ -64,8 +64,9 @@ const Recommended = ({ search }) => {
   );
   return (
     <StRecommended>
-      <h2>Recommended for you</h2>
-
+      {!search && <h2>Recommended for you</h2>}
+      
+      {search ? <p>Found {searched.length} results for `{search}` </p>: <></>}
       {recommended}
     </StRecommended>
   );
