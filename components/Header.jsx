@@ -7,21 +7,42 @@ import MoviesNI from "../public/assets/MoviesNI";
 import TvNI from "../public/assets/TvNI";
 import StHeader from "../styles/stComponents/StHeader";
 import avatar from "../public/assets/image-avatar.png";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <StHeader>
       <MovieMain />
 
-      <div className="nav">
-        <HomeNI />
+      <nav className="nav">
+        <Link passHref href="/">
+          <span>
+            <HomeNI fill={router.asPath === "/" ? "#fff" : "#5A698F"} />
+          </span>
+        </Link>
 
-        <MoviesNI />
+        <Link passHref href="/movies">
+          <span>
+            <MoviesNI fill={router.asPath === "/movies" ? "#fff" : "#5A698F"} />
+          </span>
+        </Link>
 
-        <TvNI />
+        <Link passHref href="/series">
+          <span>
+            <TvNI fill={router.asPath === "/series" ? "#fff" : "#5A698F"} />
+          </span>
+        </Link>
 
-        <BookmarkNI />
-      </div>
+        <Link passHref href="/bookmarked">
+          <span>
+            <BookmarkNI
+              fill={router.asPath === "/series" ? "#fff" : "#5A698F"}
+            />
+          </span>
+        </Link>
+      </nav>
 
       <Image src={avatar} alt="Avatar" width="30px" height="30px" />
     </StHeader>
