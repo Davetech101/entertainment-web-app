@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Recommended from "../components/Recommended"
+import Movies from "../components/AllMovies"
 import Layout from "../components/reuseable/Layout"
 import Search from "../components/Search"
 import Trending from "../components/Trending"
@@ -16,7 +16,7 @@ export default function Home() {
 
       {search.trim().length === 0 ?  <Trending/> : <></>}
 
-      <Recommended search={search}/>
+      <Movies search={search}/>
     </Layout>
   )
 }

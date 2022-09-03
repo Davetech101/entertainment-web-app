@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StRecommended = styled.section`
+const StMovies = styled.section`
 margin-top: 2.4rem;
 
 p{
@@ -69,4 +69,4 @@ h2 {
 }
 `
 
-export default StRecommended
+export default StMovies

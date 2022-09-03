@@ -1,15 +1,30 @@
-import { useState } from "react";
-import StRecommended from "../styles/stComponents/StRecommended";
+import { useState, useEffect } from "react";
+import StRecommended from "../styles/stComponents/StMovies";
 import movies from "../data.json";
 import Image from "next/image";
 import Bookmark from "../public/assets/Bookmark";
 import Bookmarked from "../public/assets/Bookmarked";
 import Movie from "../public/assets/Movie";
+import StMovies from "../styles/stComponents/StMovies";
 
-const Recommended = ({ search }) => {
+const Movies = ({ search, type }) => {
   const [data, setData] = useState(movies);
+  const [filteredMovies, setFilteredMovies] = useState(data);
 
-  const searched = data.filter((data) => {
+  useEffect(() => {
+    switch (type) {
+      case "movies":
+        setFilteredMovies(
+          data?.filter((movie) => movie.category === "Movie")
+        );
+        break;
+
+      default:
+        setFilteredMovies(data);
+    }
+  }, [data, type]);
+
+  const searched = filteredMovies.filter((data) => {
     const title = data.title.toLocaleLowerCase();
     const searched = search.toLocaleLowerCase();
 
@@ -33,7 +48,7 @@ const Recommended = ({ search }) => {
               />
               <button
                 onClick={() =>
-                  setData((prev) =>
+                  setFilteredMovies((prev) =>
                     prev.map((el, id) =>
                       id === idx
                         ? { ...el, isBookmarked: !el.isBookmarked }
@@ -63,13 +78,21 @@ const Recommended = ({ search }) => {
     </div>
   );
   return (
-    <StRecommended>
-      {!search && <h2>Recommended for you</h2>}
-      
-      {search ? <p>Found {searched.length} results for `{search}` </p>: <></>}
+    <StMovies>
+      {!search && (
+        <h2>{type === "movies" ? "Movies" : "Recommended for you"}</h2>
+      )}
+
+      {search ? (
+        <p>
+          Found {searched.length} results for `{search}`{" "}
+        </p>
+      ) : (
+        <></>
+      )}
       {recommended}
-    </StRecommended>
+    </StMovies>
   );
 };
 
-export default Recommended;
+export default Movies;
