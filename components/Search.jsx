@@ -16,6 +16,10 @@ const Search = ({ getValue, type }) => {
       case "movies":
         setPlaceholder("Search for movies");
         break;
+
+      case "series":
+        setPlaceholder("Search for Tv Series")
+        break;
   
       default:
         setPlaceholder("Search for a movie or TV series");
