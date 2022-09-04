@@ -9,14 +9,16 @@ import StMovies from "../styles/stComponents/StMovies";
 
 const Movies = ({ search, type }) => {
   const [data, setData] = useState(movies);
-  const [filteredMovies, setFilteredMovies] = useState(data);
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
     switch (type) {
       case "movies":
-        setFilteredMovies(
-          data?.filter((movie) => movie.category === "Movie")
-        );
+        setFilteredMovies(data?.filter((movie) => movie.category === "Movie"));
+        break;
+
+        case "series":
+        setFilteredMovies(data?.filter((movie) => movie.category === "TV Series"));
         break;
 
       default:
@@ -80,7 +82,13 @@ const Movies = ({ search, type }) => {
   return (
     <StMovies>
       {!search && (
-        <h2>{type === "movies" ? "Movies" : "Recommended for you"}</h2>
+        <h2>
+          {type === "movies"
+            ? "Movies"
+            : type === "series"
+            ? "Tv Series"
+            : "Recommended for you"}
+        </h2>
       )}
 
       {search ? (
