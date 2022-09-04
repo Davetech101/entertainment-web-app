@@ -29,16 +29,16 @@ const Header = () => {
           </span>
         </Link>
 
-        <Link passHref href="/series">
+        <Link passHref href="/tv-series">
           <span>
-            <TvNI fill={router.asPath === "/series" ? "#fff" : "#5A698F"} />
+            <TvNI fill={router.asPath === "/tv-series" ? "#fff" : "#5A698F"} />
           </span>
         </Link>
 
         <Link passHref href="/bookmarked">
           <span>
             <BookmarkNI
-              fill={router.asPath === "/series" ? "#fff" : "#5A698F"}
+              fill={router.asPath === "/bookmarked" ? "#fff" : "#5A698F"}
             />
           </span>
         </Link>
