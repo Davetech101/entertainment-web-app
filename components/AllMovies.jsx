@@ -8,7 +8,6 @@ import Movie from "../public/assets/Movie";
 import StMovies from "../styles/stComponents/StMovies";
 
 const Movies = ({ search, type }) => {
-  const [data, setData] = useState(movies);
   const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const Movies = ({ search, type }) => {
       default:
         setFilteredMovies(data);
     }
-  }, [data, type]);
+  }, [type]);
 
   const searched = filteredMovies.filter((data) => {
     const title = data.title.toLocaleLowerCase();
