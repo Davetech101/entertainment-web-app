@@ -13,15 +13,23 @@ const Movies = ({ search, type }) => {
   useEffect(() => {
     switch (type) {
       case "movies":
-        setFilteredMovies(data?.filter((movie) => movie.category === "Movie"));
+        setFilteredMovies(
+          movies?.filter((movie) => movie.category === "Movie")
+        );
         break;
 
-        case "series":
-        setFilteredMovies(data?.filter((movie) => movie.category === "TV Series"));
+      case "series":
+        setFilteredMovies(
+          movies?.filter((movie) => movie.category === "TV Series")
+        );
+        break;
+
+      case "bookmark":
+        setFilteredMovies(movies?.filter((movie) => movie.isBookmarked));
         break;
 
       default:
-        setFilteredMovies(data);
+        setFilteredMovies(movies);
     }
   }, [type]);
 
@@ -86,6 +94,8 @@ const Movies = ({ search, type }) => {
             ? "Movies"
             : type === "series"
             ? "Tv Series"
+            : type === "bookmark"
+            ? "Bookmarked Movies"
             : "Recommended for you"}
         </h2>
       )}
