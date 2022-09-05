@@ -18,14 +18,17 @@ const Search = ({ getValue, type }) => {
         break;
 
       case "series":
-        setPlaceholder("Search for Tv Series")
+        setPlaceholder("Search for Tv Series");
         break;
-  
+
+      case "bookmark":
+        setPlaceholder("Search for bookmarked shows");
+        break;
+
       default:
         setPlaceholder("Search for a movie or TV series");
     }
-  }, [type])
-  
+  }, [type]);
 
   return (
     <StSearch>
