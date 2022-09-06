@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import StRecommended from "../styles/stComponents/StMovies";
 import movies from "../data.json";
 import Image from "next/image";
 import Bookmark from "../public/assets/Bookmark";
