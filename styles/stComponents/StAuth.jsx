@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StAuth = styled.form`
-  padding: 0 2.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
