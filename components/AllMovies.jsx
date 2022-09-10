@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
-import movies from "../data.json";
+import { useState, useEffect, useContext, useCallback } from "react";
 import Image from "next/image";
 import Bookmark from "../public/assets/Bookmark";
 import Bookmarked from "../public/assets/Bookmarked";
 import Movie from "../public/assets/Movie";
 import StMovies from "../styles/stComponents/StMovies";
+import { Store } from "../context/store";
 
 const Movies = ({ search, type }) => {
+  const { movies, bookmarkMovie } = useContext(Store);
+
   const [filteredMovies, setFilteredMovies] = useState(movies);
 
   useEffect(() => {
@@ -30,18 +32,20 @@ const Movies = ({ search, type }) => {
       default:
         setFilteredMovies(movies);
     }
-  }, [type]);
+  }, [movies, type]);
 
-  const searched = filteredMovies.filter((data) => {
-    const title = data.title.toLocaleLowerCase();
-    const searched = search.toLocaleLowerCase();
+  const searched = useCallback(() => {
+    return filteredMovies.filter((data) => {
+      const title = data.title.toLocaleLowerCase();
+      const searched = search.toLocaleLowerCase();
 
-    return title.includes(searched);
-  });
+      return title.includes(searched);
+    });
+  }, [filteredMovies, search]);
 
   const recommended = (
     <div className="cont">
-      {searched.map((data, idx) => {
+      {searched().map((data, idx) => {
         const img = data.thumbnail.regular.small;
         return (
           <div key={data.title} className="subCont">
@@ -55,15 +59,9 @@ const Movies = ({ search, type }) => {
                 alt="Avatar"
               />
               <button
-                onClick={() =>
-                  setFilteredMovies((prev) =>
-                    prev.map((el, id) =>
-                      id === idx
-                        ? { ...el, isBookmarked: !el.isBookmarked }
-                        : el
-                    )
-                  )
-                }
+                onClick={() => {
+                  bookmarkMovie(data.title);
+                }}
               >
                 {data.isBookmarked ? <Bookmarked /> : <Bookmark />}
               </button>
