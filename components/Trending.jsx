@@ -1,14 +1,15 @@
 import Image from "next/image";
-import movies from "../data.json";
 import StTrending from "../styles/stComponents/StTrending";
 import Movie from "../public/assets/Movie";
 import Bookmark from "../public/assets/Bookmark";
 import Bookmarked from "../public/assets/Bookmarked";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Store } from "../context/store";
 
 const Trending = () => {
-  const [data, setData] = useState(movies);
-  const filteredData = data?.filter((dat) => dat.isTrending);
+  const {movies, bookmarkMovie } = useContext(Store);
+
+  const filteredData = movies?.filter((movie) => movie.isTrending);
 
   const trending = (
     <div className="cont">
@@ -26,11 +27,7 @@ const Trending = () => {
                 alt="Avatar"
               />
               <button
-                onClick={() => setData((prev) => (
-                  prev.map((el, id) => (
-                    id === idx ? {...el, isBookmarked: !el.isBookmarked} : el
-                  ))
-                ))}
+                onClick={() => bookmarkMovie(data.title)}
               >
                 {data.isBookmarked ? <Bookmarked /> : <Bookmark />}
               </button>
