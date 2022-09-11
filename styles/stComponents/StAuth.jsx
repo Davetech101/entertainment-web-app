@@ -5,6 +5,8 @@ const StAuth = styled.form`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  max-width:50rem;
+  margin:0 auto;
 
   h2 {
     font-size: 3.2rem;
