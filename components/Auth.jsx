@@ -1,22 +1,74 @@
 import Link from "next/link";
+import { useState, useCallback } from "react";
 import MovieMain from "../public/assets/MovieMain";
 import StAuth from "../styles/stComponents/StAuth";
 
 const Auth = ({ type }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    passwordRepeat: "",
+  });
+
+  const [match, setMatch] = useState(true);
+
+  const onChange = useCallback((e) => {
+    setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  }, []);
+
+  const submitHandler = useCallback(
+    (e) => {
+      e.preventDefault();
+      
+      if (formData.password !== formData.passwordRepeat) {
+        setMatch(false);
+        setTimeout(() => {
+          setMatch(true);
+        }, 2000);
+      } else {
+        setMatch(true);
+        console.log(formData);
+      }
+
+      e.target.reset()
+    },
+    [formData]
+  );
+
   return (
-    <StAuth>
+    <StAuth onSubmit={submitHandler}>
       <MovieMain />
 
       <div className="card">
         <h2>{type === "signup" ? "Sign Up" : "Login"}</h2>
 
-        <input type="email" placeholder="Email address" />
+        <input
+          type="email"
+          placeholder="Email address"
+          id="email"
+          onChange={onChange}
+          required
+        />
 
-        <input type="password" placeholder="Password" />
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          onChange={onChange}
+          required
+        />
 
         {type === "signup" && (
-          <input type="password" placeholder="Repeat Password" />
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            id="passwordRepeat"
+            onChange={onChange}
+            required
+          />
         )}
+
+        {!match && <p>passwords must match</p>}
 
         <button>
           {type === "signup" ? "Create an account" : "Login to your account"}
