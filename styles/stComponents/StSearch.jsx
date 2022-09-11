@@ -23,6 +23,17 @@ const StSearch = styled.div`
   label {
     position: absolute;
   }
+
+  @media only screen and (min-width: 800px) {
+    position: fixed;
+    left: 10rem;
+    right:0;
+    top: 0;
+    background: #10141e;
+    z-index: 1000;
+    padding:2rem;
+    margin-top: unset;
+  }
 `;
 
 export default StSearch;
