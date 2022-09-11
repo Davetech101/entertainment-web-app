@@ -47,5 +47,16 @@ const StAuth = styled.form`
   a{
     color:#FC4747;
   }
+
+  p{
+    font-size:1.5rem;
+    color:#FC4747;
+    margin:1rem auto 0;
+    text-align:center;
+  }
+
+  @media only screen and (min-width: 800px) {
+    margin:10rem auto;
+  }
 `;
 export default StAuth;

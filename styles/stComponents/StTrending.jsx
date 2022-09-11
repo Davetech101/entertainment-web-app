@@ -95,7 +95,6 @@ const StTrending = styled.div`
 
   @media only screen and (min-width: 800px) {
     padding-left:10rem;
-    margin-top:5rem;
 
     .img {
       height: 16rem;

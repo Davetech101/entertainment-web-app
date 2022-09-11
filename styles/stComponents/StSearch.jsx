@@ -25,14 +25,15 @@ const StSearch = styled.div`
   }
 
   @media only screen and (min-width: 800px) {
-    position: fixed;
+    position: sticky;
     left: 10rem;
     right:0;
     top: 0;
     background: #10141e;
     z-index: 1000;
     padding:2rem;
-    margin-top: unset;
+    margin-left:10rem;
+    margin-top:unset;
   }
 `;
 
