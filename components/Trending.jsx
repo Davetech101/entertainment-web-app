@@ -17,15 +17,15 @@ const Trending = () => {
         const img = data.thumbnail.trending.small;
         return (
           <div key={data.title} className="subCont">
-            <div className="img">
-              <Image
+            <div className="img" style={{background: `url(${img})`, backgroundRepeat:"no-repeat", backgroundSize: "cover"}}>
+              {/* <Image
                 style={{
                   borderRadius: "10px",
                 }}
                 src={img}
                 layout="fill"
                 alt="Avatar"
-              />
+              /> */}
               <button
                 onClick={() => bookmarkMovie(data.title)}
               >
