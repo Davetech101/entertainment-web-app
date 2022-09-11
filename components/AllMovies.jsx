@@ -44,20 +44,21 @@ const Movies = ({ search, type }) => {
   }, [filteredMovies, search]);
 
   const recommended = (
-    <div className="cont">
+    <main>
+      <div className="cont">
       {searched().map((data, idx) => {
-        const img = data.thumbnail.regular.small;
+        const img = data.thumbnail.regular.large;
         return (
           <div key={data.title} className="subCont">
-            <div className="img">
-              <Image
+            <div className="img" style={{background: `url(${img})`, backgroundRepeat:"no-repeat", backgroundSize: "cover"}}>
+              {/* <Image
                 style={{
                   borderRadius: "10px",
                 }}
                 src={img}
                 layout="fill"
                 alt="Avatar"
-              />
+              /> */}
               <button
                 onClick={() => {
                   bookmarkMovie(data.title);
@@ -82,6 +83,7 @@ const Movies = ({ search, type }) => {
         );
       })}
     </div>
+    </main>
   );
   return (
     <StMovies>
