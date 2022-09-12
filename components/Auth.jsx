@@ -19,7 +19,7 @@ const Auth = ({ type }) => {
   const submitHandler = useCallback(
     (e) => {
       e.preventDefault();
-      
+
       if (formData.password !== formData.passwordRepeat) {
         setMatch(false);
         setTimeout(() => {
@@ -28,9 +28,9 @@ const Auth = ({ type }) => {
       } else {
         setMatch(true);
         console.log(formData);
-      }
 
-      e.target.reset()
+        e.target.reset();
+      }
     },
     [formData]
   );
