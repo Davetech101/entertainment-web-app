@@ -20,7 +20,7 @@ const Auth = ({ type }) => {
     (e) => {
       e.preventDefault();
 
-      if (formData.password !== formData.passwordRepeat) {
+      if (type !== "login" && formData.password !== formData.passwordRepeat) {
         setMatch(false);
         setTimeout(() => {
           setMatch(true);
@@ -32,7 +32,7 @@ const Auth = ({ type }) => {
         e.target.reset();
       }
     },
-    [formData]
+    [formData, type]
   );
 
   return (
@@ -56,6 +56,7 @@ const Auth = ({ type }) => {
           id="password"
           onChange={onChange}
           required
+          // minLength="6"
         />
 
         {type === "signup" && (
@@ -65,6 +66,7 @@ const Auth = ({ type }) => {
             id="passwordRepeat"
             onChange={onChange}
             required
+            // minLength="6"
           />
         )}
 
