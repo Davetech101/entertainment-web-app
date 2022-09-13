@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext, useCallback } from "react";
-import Image from "next/image";
 import Bookmark from "../public/assets/Bookmark";
 import Bookmarked from "../public/assets/Bookmarked";
 import Movie from "../public/assets/Movie";
@@ -46,19 +45,11 @@ const Movies = ({ search, type }) => {
   const recommended = (
     <main>
       <div className="cont">
-      {searched().map((data, idx) => {
+      {searched().map((data) => {
         const img = data.thumbnail.regular.large;
         return (
           <div key={data.title} className="subCont">
             <div className="img" style={{background: `url(${img})`, backgroundRepeat:"no-repeat", backgroundSize: "cover"}}>
-              {/* <Image
-                style={{
-                  borderRadius: "10px",
-                }}
-                src={img}
-                layout="fill"
-                alt="Avatar"
-              /> */}
               <button
                 onClick={() => {
                   bookmarkMovie(data.title);
@@ -101,7 +92,7 @@ const Movies = ({ search, type }) => {
 
       {search ? (
         <p>
-          Found {searched.length} results for `{search}`{" "}
+          Found {searched().length} results for `{search}`{" "}
         </p>
       ) : (
         <></>
